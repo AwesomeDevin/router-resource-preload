@@ -8,8 +8,9 @@
     "sourceMap": true,
     "moduleResolution": "Node",
     "lib": ["ES2017", "dom"],
-    "outDir": "build/typings",
-    "declaration": true
+    "outDir": "dist/typings",
+    "declaration": true,
+    "jsx": "react-jsx",
   },
   "include": ["src"]
 }

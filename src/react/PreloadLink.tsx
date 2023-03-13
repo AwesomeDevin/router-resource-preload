@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
+
 interface IProps {
   to: string
   preload?: boolean
@@ -13,6 +14,14 @@ interface IFile {
   type: string
   href: string
 }
+
+
+declare global{
+  interface Window {
+    routerManifest: any
+  }
+}
+
 
 export default function PreloadLink(props: IProps) {
   const { to, children, preload, inview, basename } = props
@@ -108,8 +117,11 @@ export default function PreloadLink(props: IProps) {
   }, [to])
 
   return (
-    <Link to={to} onMouseEnter={handleMouseEnter} ref={ref}>
+    Link ? <Link to={to} onMouseEnter={handleMouseEnter} ref={ref}>
       {children}
-    </Link>
+    </Link>:
+    <a href={basename + to} onMouseEnter={handleMouseEnter} ref={ref}>
+      {children}
+    </a>
   )
 }
