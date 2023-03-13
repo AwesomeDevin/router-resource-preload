@@ -1,0 +1,26 @@
+{
+  "name": "route-resource-preload",
+  "version": "1.0.0-beta.1",
+  "description": "Realize routing and mf resources and load based on webpack",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AwesomeDevin/route-resource-preload.git"
+  },
+  "keywords": [
+    "route",
+    "preload",
+    "module-federation",
+    "route-preload",
+    "resource-preload",
+    "module-federation-preload"
+  ],
+  "author": "AwesomeDevin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AwesomeDevin/route-resource-preload/issues"
+  },
+  "homepage": "https://github.com/AwesomeDevin/route-resource-preload#readme"
+}
