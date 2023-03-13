@@ -1,5 +1,4 @@
 const _path = require('path')
-const rsort = require('route-sort');
 
 const NAME = 'webpack-route-resource-manifest';
 
@@ -22,7 +21,6 @@ declare namespace NameSpaceRouteResourceManifest {
 		headers?: true | ((files: Asset[], pattern: Pattern, filemap: FileMap) => any[]);
 		filename?: string;
 		minify?: boolean;
-		sort?: boolean;
 		basename?: string
 	}
 }
@@ -63,7 +61,7 @@ class RouteResourceManifest implements IRouteResourceManifest  {
 
 	constructor(opts: NameSpaceRouteResourceManifest.Options) {
 		const { assets, headers, minify, modulePrefetchMap, mfPrefetchMap  } = opts || {};
-		const { filename='manifest.json', sort=true,  basename = '' } = opts || {};
+		const { filename='manifest.json',  basename = '' } = opts || {};
 		let { routes } = opts || {}
 
 		if (!routes && !modulePrefetchMap && !mfPrefetchMap) {
@@ -146,7 +144,6 @@ class RouteResourceManifest implements IRouteResourceManifest  {
 
 			const routes = Object.keys(Files);
 
-			if (sort) rsort(routes);
 
 			if(mfPrefetchKeys.length){
 				mfPrefetchKeys.forEach(key=>{
@@ -161,9 +158,7 @@ class RouteResourceManifest implements IRouteResourceManifest  {
 		
 
 			if (!toHeaders) {
-				if (!sort) return write(Files);
-				const defaultData: Record<string, any> = {}
-				return write(routes.reduce((o, key) => (o[key]=Files[key], o), defaultData));
+				return write(Files)
 			}
 
 			routes.forEach(pattern => {

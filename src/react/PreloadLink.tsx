@@ -1,13 +1,13 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { createElement, useCallback, useEffect, useRef, useState, FunctionComponent, useMemo } from 'react'
 
-
+import { loadMap } from '../constant'
 interface IProps {
   to: string
   preload?: boolean
   inview?: boolean
   children: React.ReactNode
   basename?: string
+  containerRender?: FunctionComponent<any>
 }
 
 interface IFile {
@@ -24,26 +24,55 @@ declare global{
 
 
 export default function PreloadLink(props: IProps) {
-  const { to, children, preload, inview, basename } = props
+  const { to, children, preload, inview, basename, containerRender } = props
 
   const [loaded, setLoaded] = useState(false)
   const [preloadFiles, setPreloadFiles] = useState<IFile[]>([])
   const ref = useRef<HTMLAnchorElement>(null)
 
+  const checkComponentKeys = (href: string, type: 'script' | 'mf')=>{
+    const componentKeys = Object.keys(loadMap.component)
+    if(type === 'script'){
+      for(let index = 0;index < componentKeys.length; index++){
+        const key = componentKeys[index]
+        if(href.match(key)){
+          loadMap.component[key].preload().then(()=>{
+            loadMap.component[key].loaded = true
+          })
+          break
+        }
+      }
+    }else if(type === 'mf'){
+      for(let index = 0;index < componentKeys.length; index++){
+        const key = componentKeys[index]
+        if(key.match(href)){
+          loadMap.component[key].preload().then(()=>{
+            loadMap.component[key].loaded = true
+          })
+          break
+        }
+      }
+    }
+  }
+
   const init = useCallback(() => {
     if (!preloadFiles.length) return
 
     const appendLink = (href: string, type: string) => {
+      if(loadMap.cache[href]) return
+      loadMap.cache[href] = true
       const mfInfo = href.split('/')
       let dom
       switch (type) {
         case 'script':
           dom = document.createElement('script')
           dom.src = href
+          checkComponentKeys(href, 'script')
           break
         case 'mf':
           // @ts-ignore
           mfInfo[0] && window[mfInfo[0]].get('./' + mfInfo[1])
+          checkComponentKeys(mfInfo[1], 'mf')
           break
         default:
           dom = document.createElement('link')
@@ -116,11 +145,15 @@ export default function PreloadLink(props: IProps) {
       })
   }, [to])
 
+  const commonProps = useMemo(()=>({
+    onMouseEnter: handleMouseEnter,
+    ref
+  }),[handleMouseEnter, ref])
+
+
   return (
-    Link ? <Link to={to} onMouseEnter={handleMouseEnter} ref={ref}>
-      {children}
-    </Link>:
-    <a href={basename + to} onMouseEnter={handleMouseEnter} ref={ref}>
+    containerRender ? createElement("div", commonProps, containerRender, children):
+    <a href={basename + to} {...commonProps}>
       {children}
     </a>
   )
