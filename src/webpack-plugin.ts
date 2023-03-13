@@ -2,12 +2,6 @@ const _path = require('path')
 const rsort = require('route-sort');
 
 const NAME = 'webpack-route-resource-manifest';
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-const _path2 = _interopRequireDefault(_path);
-
-function _interopRequireDefault(obj: any) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 declare namespace NameSpaceRouteResourceManifest {
 	type Pattern = string;
@@ -135,7 +129,7 @@ class RouteResourceManifest implements IRouteResourceManifest  {
 
 				obj.assets.forEach((str: string) => {
 					let type = toType(str);
-					let href = _path2.join(basename, str)
+					let href = _path.join(basename, str)
 					if (type) tmp.push({ type, href });
 				});
 			});

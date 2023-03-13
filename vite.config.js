@@ -8,7 +8,7 @@ export default  defineConfig({
   // 配置选项
   build: {
     lib: {
-      entry: [_path.resolve(__dirname, './src/index.ts')], // 设置入口文件
+      entry: [_path.resolve(__dirname, './src/webpack-plugin.ts')], // 设置入口文件
       name: 'route-resource-preload', 
       formats: ['es','cjs']
     },

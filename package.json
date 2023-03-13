@@ -1,7 +1,7 @@
 {
   "name": "route-resource-preload",
   "version": "1.0.0-beta.1",
-  "description": "Realize routing and mf resources and load based on webpack",
+  "description": "Supports the preloading of resources and modules by route.",
   "scripts": {
     "build": "npx vite build && npx tsc --emitDeclarationOnly",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,11 +11,11 @@
     "url": "git+https://github.com/AwesomeDevin/route-resource-preload.git"
   },
   "keywords": [
-    "route",
     "preload",
-    "module-federation",
     "route-preload",
+    "js-preload",
     "resource-preload",
+    "module-preload",
     "module-federation-preload"
   ],
   "dependencies": {
