@@ -18,6 +18,23 @@
     "module-preload",
     "module-federation-preload"
   ],
+  "exports": {
+    "./webpack-plugin": {
+      "types": "./dist/typings/webpack-plugin.d.ts",
+      "import": "./dist/webpack-plugin.es.js",
+      "module": "./dist/webpack-plugin.es.js",
+      "require": "./dist/webpack-plugin.cjs.js",
+      "default": "./dist/webpack-plugin.cjs.js"
+    },
+    "./react": {
+      "types": "./dist/typings/react/*.d.ts",
+      "import": "./dist/react/index.es.js",
+      "module": "./dist/react/index.es.js",
+      "require": "./dist/react/index.cjs.js",
+      "default": "./dist/react/index.cjs.js"
+    }
+  },
+  "sideEffects": false,
   "dependencies": {
     "react": "17.0.0"
   },
@@ -30,6 +47,9 @@
   "peerDependencies": {
     "react": ">=17.0.0"
   },
+  "files": [
+    "dist/"
+  ],
   "devDependencies": {
     "@types/node": "^18.15.0",
     "@vitejs/plugin-react": "^3.1.0",

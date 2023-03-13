@@ -13,10 +13,11 @@ export default  defineConfig({
       name: 'route-resource-preload', 
       formats: ['es','cjs'],
       fileName: (format, entryName) => {
+        console.log(format)
         if(entryName.match(/plugin/)){
-          return `${entryName}.js`
+          return `${entryName}.${format}.js`
         }else{
-          return `react/${entryName}.js`
+          return `react/${entryName}.${format}.js`
         }
         
       }
