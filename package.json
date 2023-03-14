@@ -23,20 +23,26 @@
   "main": "./dist/index.cjs.js",
   "exports": {
     ".": {
-      "types": "./dist/typings/index.d.ts",
+      "types": {
+        "default": "./dist/typings/index.d.ts"
+      },
       "import": "./dist/index.es.js",
       "require": "./dist/index.cjs.js",
       "default": "./dist/index.cjs.js"
     },
     "./webpack-plugin": {
-      "types": "./dist/typings/webpack-plugin.d.ts",
+      "types":{
+        "default": "./dist/typings/webpack-plugin.d.ts"
+      },
       "import": "./dist/webpack-plugin.es.js",
       "require": "./dist/webpack-plugin.cjs.js",
       "node": "./dist/webpack-plugin.cjs.js",
       "default": "./dist/webpack-plugin.cjs.js"
     },
     "./react": {
-      "types": "./dist/typings/react/index.react.d.ts",
+      "types": {
+        "default": "./dist/typings/react/index.react.d.ts"
+      },
       "import": "./dist/react/index.es.js",
       "require": "./dist/react/index.cjs.js",
       "default": "./dist/react/index.cjs.js"
