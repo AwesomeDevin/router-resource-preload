@@ -2,7 +2,7 @@ const _path = require('path')
 
 const NAME = 'webpack-route-resource-manifest';
 
-declare namespace NameSpaceRouteResourceManifest {
+declare namespace NameSpaceRouteResourcePreloadPlugin {
 	type Pattern = string;
 	type Filter<T> = T | false | void | null;
 
@@ -25,7 +25,7 @@ declare namespace NameSpaceRouteResourceManifest {
 	}
 }
 
-interface IRouteResourceManifest {
+interface IRouteResourcePreloadPlugin {
 	run(compilation: any): void;
 	apply(compiler: any): void;
 }
@@ -56,10 +56,10 @@ function toFunction(val: boolean | Function | Record<string, any>) {
 	if (typeof val === 'object') return (key: string) => val[key];
 }
 
-class RouteResourceManifest implements IRouteResourceManifest  {
+class RouteResourcePreloadPlugin implements IRouteResourcePreloadPlugin  {
 	run: (compilation: any) => void;
 
-	constructor(opts: NameSpaceRouteResourceManifest.Options) {
+	constructor(opts: NameSpaceRouteResourcePreloadPlugin.Options) {
 		const { assets, headers, minify, modulePrefetchMap, mfPrefetchMap  } = opts || {};
 		const { filename='manifest.json',  basename = '' } = opts || {};
 		let { routes } = opts || {}
@@ -181,4 +181,4 @@ class RouteResourceManifest implements IRouteResourceManifest  {
 	}
 }
 
-module.exports = RouteResourceManifest;
+export default RouteResourcePreloadPlugin;

@@ -360,11 +360,6 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@remix-run/router@1.4.0":
-  version "1.4.0"
-  resolved "http://registry.m.jd.com/@remix-run/router/download/@remix-run/router-1.4.0.tgz#74935d538e4df8893e47831a7aea362f295bcd39"
-  integrity sha1-dJNdU45N+Ik+R4Maeuo2LylbzTk=
-
 "@rollup/plugin-commonjs@^24.0.1":
   version "24.0.1"
   resolved "http://registry.m.jd.com/@rollup/plugin-commonjs/download/@rollup/plugin-commonjs-24.0.1.tgz#d54ba26a3e3c495dc332bd27a81f7e9e2df46f90"
@@ -719,21 +714,6 @@ react-refresh@^0.14.0:
   resolved "http://registry.m.jd.com/react-refresh/download/react-refresh-0.14.0.tgz#4e02825378a5f227079554d4284889354e5f553e"
   integrity sha1-TgKCU3il8icHlVTUKEiJNU5fVT4=
 
-react-router-dom@^6.9.0:
-  version "6.9.0"
-  resolved "http://registry.m.jd.com/react-router-dom/download/react-router-dom-6.9.0.tgz#dd8b4e461453bd4cad2e6404493d1a5b4bfea758"
-  integrity sha1-3YtORhRTvUytLmQEST0aW0v+p1g=
-  dependencies:
-    "@remix-run/router" "1.4.0"
-    react-router "6.9.0"
-
-react-router@6.9.0:
-  version "6.9.0"
-  resolved "http://registry.m.jd.com/react-router/download/react-router-6.9.0.tgz#0f503d9becbc62d9e4ddc0f9bd4026e0fd29fbf5"
-  integrity sha1-D1A9m+y8Ytnk3cD5vUAm4P0p+/U=
-  dependencies:
-    "@remix-run/router" "1.4.0"
-
 react@17.0.0:
   version "17.0.0"
   resolved "http://registry.m.jd.com/react/download/react-17.0.0.tgz#ad96d5fa1a33bb9b06d0cc52672f7992d84aa662"
@@ -757,11 +737,6 @@ rollup@^3.10.0:
   integrity sha1-KzoxrB/586+rLlI/pof+9bDuIPw=
   optionalDependencies:
     fsevents "~2.3.2"
-
-route-sort@^1.0.0:
-  version "1.0.0"
-  resolved "http://registry.m.jd.com/route-sort/download/route-sort-1.0.0.tgz#078149c8d2d2de8b8563adf139ec58476835c94b"
-  integrity sha1-B4FJyNLS3ouFY63xOexYR2g1yUs=
 
 semver@^6.3.0:
   version "6.3.0"

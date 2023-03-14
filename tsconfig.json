@@ -6,7 +6,7 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "nodenext",
     "lib": ["ES2017", "dom"],
     "outDir": "dist/typings",
     "declaration": true,

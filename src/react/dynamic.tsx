@@ -5,7 +5,6 @@ import { loadMap } from '../constant'
 interface IPrams {
   loader: () => any
   loading?: FunctionComponent<any>
-  id?: string
 }
 
 function resolve(obj: any) {
@@ -18,19 +17,13 @@ function render(target: FunctionComponent<any>, props: any) {
 
 export default function dynamic(params: IPrams) {
   const { loader, loading } = params
-  let { id } = params
 
   let loaded = false
   let module: FunctionComponent<any>
 
-  if(!id){
-    const functionStr = loader.toString()
-    console.log(functionStr)
-    const matches = functionStr.match(/"(\w*)"/)
-    id = matches && matches[1] || ''
-  }
-
-
+  const functionStr = loader.toString()
+  const matches = functionStr.match(/"(\w*)"/)
+  const id = matches && matches[1] || ''
 
   const load = () => {
     const promise = loader()

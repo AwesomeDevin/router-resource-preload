@@ -7,17 +7,19 @@ import commonjs from '@rollup/plugin-commonjs';
 export default  defineConfig({
   // 配置选项
   build: {
-    minify: false,
+    // minify: false,
     lib: {
-      entry: [_path.resolve(__dirname, './src/webpack-plugin.ts'), _path.resolve(__dirname, './src/react/index.ts')], // 设置入口文件
+      entry: [_path.resolve(__dirname, './src/index.ts'),_path.resolve(__dirname, './src/webpack-plugin.ts'), _path.resolve(__dirname, './src/react/index.react.ts')], // 设置入口文件
+
       name: 'route-resource-preload', 
       formats: ['es','cjs'],
       fileName: (format, entryName) => {
-        console.log(format)
         if(entryName.match(/plugin/)){
           return `${entryName}.${format}.js`
+        }else if(entryName.match(/react/)){
+          return `react/index.${format}.js`
         }else{
-          return `react/${entryName}.${format}.js`
+          return `${entryName}.${format}.js`
         }
         
       }
